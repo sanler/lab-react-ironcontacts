@@ -44,11 +44,51 @@ class DynamicContactList extends Component{
 
     }
 
+    sortByName=()=>{
+
+        const mycontactsCpy=this.state.mycontacts;
+
+        mycontactsCpy.sort(function (a, b){
+
+            if(a.name>b.name)
+                return 1;
+            else
+                return -1;
+        })
+        this.setState({
+            mycontacts: mycontactsCpy
+                });
+
+    }
+
+    sortByPopularity=()=>{
+
+        const mycontactsCpy=this.state.mycontacts;
+
+        mycontactsCpy.sort(function (a, b){
+
+            if(a.popularity<b.popularity)
+                return 1;
+            else
+                return -1;
+        })
+        this.setState({
+            mycontacts: mycontactsCpy
+                });
+
+    }
+
+
+
+
 render(){
     return(
         <div>
             <h1>IronContacts</h1>
-            <button onClick={this.clickToAddContact}>Add Random Contact</button>
+            <button onClick={this.clickToAddContact}>Add Random Contact</button>           
+            <button onClick={this.sortByName}>Sort by Name</button>
+            <button onClick={this.sortByPopularity}>Sort by Popularity</button>
+
             <div className="container">
 
                 <table>
