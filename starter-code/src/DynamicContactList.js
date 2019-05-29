@@ -18,11 +18,27 @@ class DynamicContactList extends Component{
         }
     }
 
+
+    clickToAddContact=()=>{
+        const mycontactsCpy=this.state.mycontacts;
+        const randomIndex=Math.floor(Math.random()*(contactList.length+1));
+        const randomContact=contactList.splice(randomIndex,1);
+        mycontactsCpy.push(...randomContact);
+        console.log(randomContact);
+        console.log(mycontactsCpy);
+
+        this.setState({
+            mycontacts: mycontactsCpy
+                 });
+    }
+
 render(){
     return(
         <div>
             <h1>IronContacts</h1>
+            <button onClick={this.clickToAddContact}>Add Random Contact</button>
             <div className="container">
+
                 <table>
                     <thead>
                         <tr>
@@ -36,7 +52,7 @@ render(){
                         {
                             this.state.mycontacts.map((oneContact, index) => 
                         
-                            <Contact  {...oneContact}/>
+                            <Contact  key={index} {...oneContact}/>
 
                             )
                         }
