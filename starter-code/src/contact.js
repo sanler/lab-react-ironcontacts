@@ -1,4 +1,5 @@
 import React from 'react';
+import './contactList.css';
 
 const Contact=(props)=>{
 
@@ -6,13 +7,11 @@ const Contact=(props)=>{
 
     return (
         <tr>
-            <td>{props.pictureUrl}</td>
+            <td><img alt="contactimg" className="contactimg" src={props.pictureUrl}/></td>
             <td>{props.name}</td>
             <td>{props.popularity}</td>
         </tr>
       )
-
-
 
 
 }
