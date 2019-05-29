@@ -32,6 +32,18 @@ class DynamicContactList extends Component{
                  });
     }
 
+    deleteContact=(index)=>{
+
+        const mycontactsCpy=this.state.mycontacts;
+
+        mycontactsCpy.splice(index,1);
+
+        this.setState({
+            mycontacts: mycontactsCpy
+                });
+
+    }
+
 render(){
     return(
         <div>
@@ -45,6 +57,7 @@ render(){
                             <th>Picture</th>
                             <th>Name</th> 
                             <th>Popularity</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                 <tbody>
@@ -52,7 +65,7 @@ render(){
                         {
                             this.state.mycontacts.map((oneContact, index) => 
                         
-                            <Contact  key={index} {...oneContact}/>
+                            <Contact clickToDelete={() => this.deleteContact(index)} key={index} {...oneContact}/>
 
                             )
                         }
